@@ -15,6 +15,25 @@ class SEVEN_API AHumanCharacter : public ASevenCharacter
 	GENERATED_BODY()
 	
 	
+protected:
+	/* setting up all inputs*/
+	virtual void SetupPlayerInputComponent(UInputComponent * PlayerInputComponent) override;
+
+	/*called when left mouseButton Clicked*/
+	void AttackL();
+
+	/*called when right mouse button clicked*/
+	void AttackR();
+
+	UPROPERTY(BlueprintReadWrite)
+		class UAnimInstance * animInstance;
+
+	UPROPERTY(BlueprintReadWrite)
+		TArray < class UAnimMontage*> attackMontage;
+
+	UPROPERTY(BlueprintReadWrite)
+		TArray < class UAnimMontage*> reactMontage;
+
 	
-	
+
 };

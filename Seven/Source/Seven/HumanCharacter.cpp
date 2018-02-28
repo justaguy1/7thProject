@@ -3,5 +3,28 @@
 #include "HumanCharacter.h"
 
 
+void AHumanCharacter::SetupPlayerInputComponent(UInputComponent * PlayerInputComponent)
+{
+	check(PlayerInputComponent);
+	Super::SetupPlayerInputComponent(PlayerInputComponent);
+	PlayerInputComponent->BindAction("AttackL", IE_Pressed, this, &AHumanCharacter::AttackL);
+	PlayerInputComponent->BindAction("AttackR", IE_Pressed, this, &AHumanCharacter::AttackR);
+	
+}
 
+void AHumanCharacter::AttackL()
+{
+	UE_LOG(LogTemp, Warning, TEXT("Attack left"));
+	if (!animInstance)
+	{
+		UE_LOG(LogTemp, Warning, TEXT("Some shit happened"));
+		return;
+	}
+	animInstance->Montage_Play(attackMontage[0]);
+	
+}
 
+void AHumanCharacter::AttackR()
+{
+	UE_LOG(LogTemp, Warning, TEXT("Attack Right"));
+}
