@@ -63,10 +63,21 @@ protected:
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 	// End of APawn interface
 
+	UPROPERTY(BlueprintReadWrite)
+		class UAnimInstance * animInstance;
+
+	UPROPERTY(BlueprintReadWrite)
+		bool isMontageplaying = false;
+
+	UPROPERTY(BlueprintReadWrite)
+		bool canWalk = true;
+
 public:
 	/** Returns CameraBoom subobject **/
 	FORCEINLINE class USpringArmComponent* GetCameraBoom() const { return CameraBoom; }
 	/** Returns FollowCamera subobject **/
 	FORCEINLINE class UCameraComponent* GetFollowCamera() const { return FollowCamera; }
+
+
 };
 

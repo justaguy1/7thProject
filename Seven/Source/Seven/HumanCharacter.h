@@ -25,14 +25,20 @@ protected:
 	/*called when right mouse button clicked*/
 	void AttackR();
 
-	UPROPERTY(BlueprintReadWrite)
-		class UAnimInstance * animInstance;
+	
 
 	UPROPERTY(BlueprintReadWrite)
 		TArray < class UAnimMontage*> attackMontage;
 
 	UPROPERTY(BlueprintReadWrite)
 		TArray < class UAnimMontage*> reactMontage;
+
+	
+
+	virtual void BeginPlay() override;
+
+public:
+	virtual void Tick(float DeltaTime) override;
 
 	
 

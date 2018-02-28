@@ -114,6 +114,8 @@ void ASevenCharacter::MoveForward(float Value)
 
 		// get forward vector
 		const FVector Direction = FRotationMatrix(YawRotation).GetUnitAxis(EAxis::X);
+
+		if(canWalk==true)
 		AddMovementInput(Direction, Value);
 	}
 }
@@ -129,6 +131,7 @@ void ASevenCharacter::MoveRight(float Value)
 		// get right vector 
 		const FVector Direction = FRotationMatrix(YawRotation).GetUnitAxis(EAxis::Y);
 		// add movement in that direction
+		if(canWalk==true)
 		AddMovementInput(Direction, Value);
 	}
 }
