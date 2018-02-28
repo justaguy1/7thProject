@@ -28,10 +28,10 @@ protected:
 	
 
 	UPROPERTY(BlueprintReadWrite)
-		TArray < class UAnimMontage*> attackMontage;
+		TArray <  UAnimMontage*> attackMontage;
 
 	UPROPERTY(BlueprintReadWrite)
-		TArray < class UAnimMontage*> reactMontage;
+		TArray <  UAnimMontage*> reactMontage;
 
 	
 

@@ -42,6 +42,13 @@ void AHumanCharacter::AttackL()
 void AHumanCharacter::AttackR()
 {
 	UE_LOG(LogTemp, Warning, TEXT("Attack Right"));
+	if (!animInstance)
+	{
+		UE_LOG(LogTemp, Warning, TEXT("Some shit happened"));
+		return;
+	}
+
+	animInstance->Montage_Play(attackMontage[1]);
 }
 
 
