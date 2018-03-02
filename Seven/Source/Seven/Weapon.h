@@ -30,4 +30,9 @@ public:
 	UFUNCTION(BlueprintCallable)
 		void setDamage(float &currentHealth);
 
+	UPROPERTY(BlueprintReadWrite)
+		bool canApplyDamage = false;
+	UPROPERTY(BlueprintReadWrite)
+		int noOfHitregistered = 0;
+
 };

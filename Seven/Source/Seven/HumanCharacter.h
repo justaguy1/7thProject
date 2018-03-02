@@ -83,4 +83,7 @@ protected:
 	UFUNCTION(BlueprintCallable)
 	void applyWeaponDamage(AWeapon *weapon);
 
+	UPROPERTY(BlueprintReadWrite)
+		bool canApplyDamage = false;
+
 };

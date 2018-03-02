@@ -46,6 +46,9 @@ void AHumanCharacter::Tick(float DeltaTime)
 		GetCharacterMovement()->JumpZVelocity = 600;
 	else
 		GetCharacterMovement()->JumpZVelocity = 0.f;
+
+	if (MyWeapon == nullptr) return;
+	MyWeapon->canApplyDamage = canApplyDamage;
 	
 }
 
@@ -57,9 +60,19 @@ void AHumanCharacter::swapL()
 
 void AHumanCharacter::applyWeaponDamage(AWeapon * weapon)
 {
+	float previousHealth = currentHealth;
 	if (!weapon) return;
+
+	weapon->noOfHitregistered++;
+	if (weapon->noOfHitregistered == 1)
+	{
+	
 	weapon->setDamage(currentHealth);
-	UE_LOG(LogTemp, Warning, TEXT("current health : %f"),currentHealth);
+
+	UE_LOG(LogTemp, Warning, TEXT("current health : %f"), currentHealth);
+	if (previousHealth != currentHealth && isMontageplaying == false && weapon->canApplyDamage == true)
+		animInstance->Montage_Play(reactMontage[0], 1.3f);
+	}
 }
 
 
