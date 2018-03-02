@@ -86,4 +86,9 @@ protected:
 	UPROPERTY(BlueprintReadWrite)
 		bool canApplyDamage = false;
 
+	UPROPERTY(BlueprintReadWrite)
+		bool canPlayAnotherAnimation = false;
+
+	bool isReactionAnimationPlaying();
+
 };

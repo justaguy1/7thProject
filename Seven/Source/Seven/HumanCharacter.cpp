@@ -49,6 +49,9 @@ void AHumanCharacter::Tick(float DeltaTime)
 
 	if (MyWeapon == nullptr) return;
 	MyWeapon->canApplyDamage = canApplyDamage;
+
+
+	//UE_LOG(LogTemp, Warning, TEXT("hit registered %f"), MyWeapon->noOfHitregistered);
 	
 }
 
@@ -60,19 +63,34 @@ void AHumanCharacter::swapL()
 
 void AHumanCharacter::applyWeaponDamage(AWeapon * weapon)
 {
-	float previousHealth = currentHealth;
+	
 	if (!weapon) return;
 
-	weapon->noOfHitregistered++;
-	if (weapon->noOfHitregistered == 1)
-	{
 	
-	weapon->setDamage(currentHealth);
+	
+	
+		UE_LOG(LogTemp, Warning, TEXT("current health : %f"), currentHealth);
+		if (animInstance->Montage_IsActive(reactMontage[0]))
+			return;
+		if (weapon->canApplyDamage == true)
+				
+		{
+			
+			weapon->setDamage(currentHealth);
+			animInstance->Montage_Play(reactMontage[0], 1.3f);
+			
+		
+			
+		}
+	
+	if (currentHealth <= 0)
+		Destroy(true);
+}
 
-	UE_LOG(LogTemp, Warning, TEXT("current health : %f"), currentHealth);
-	if (previousHealth != currentHealth && isMontageplaying == false && weapon->canApplyDamage == true)
-		animInstance->Montage_Play(reactMontage[0], 1.3f);
-	}
+bool AHumanCharacter::isReactionAnimationPlaying()
+{
+	// needs to be done
+	return false;
 }
 
 
