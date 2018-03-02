@@ -27,3 +27,12 @@ void AWeapon::Tick(float DeltaTime)
 
 }
 
+void AWeapon::setDamage(float &currentHealth)
+{
+	
+	float damage = weaponDamage / 100 * 70;
+		damage= FMath::RandRange(damage, weaponDamage);
+	
+	currentHealth -= damage;
+}
+

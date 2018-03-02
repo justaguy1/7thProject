@@ -54,7 +54,10 @@ void ASevenCharacter::SetupPlayerInputComponent(class UInputComponent* PlayerInp
 {
 	// Set up gameplay key bindings
 	check(PlayerInputComponent);
+	
+	
 	PlayerInputComponent->BindAction("Jump", IE_Pressed, this, &ACharacter::Jump);
+	
 	PlayerInputComponent->BindAction("Jump", IE_Released, this, &ACharacter::StopJumping);
 
 	PlayerInputComponent->BindAxis("MoveForward", this, &ASevenCharacter::MoveForward);
@@ -84,6 +87,7 @@ void ASevenCharacter::OnResetVR()
 
 void ASevenCharacter::TouchStarted(ETouchIndex::Type FingerIndex, FVector Location)
 {
+	
 		Jump();
 }
 

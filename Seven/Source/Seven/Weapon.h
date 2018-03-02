@@ -24,6 +24,10 @@ public:
 	virtual void Tick(float DeltaTime) override;
 
 	
-	
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Weapon)
+		float weaponDamage = 15.f;
+
+	UFUNCTION(BlueprintCallable)
+		void setDamage(float &currentHealth);
 
 };
