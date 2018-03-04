@@ -19,6 +19,9 @@ AHumanCharacter::AHumanCharacter()
 	currentMana = 100;
 	maxMana = 100;
 	mana = currentMana / maxMana;
+
+	selfForwardDirection = FVector(0, 0, 0);
+	opponentForwardDirection = selfForwardDirection;
 }
 void AHumanCharacter::SetupPlayerInputComponent(UInputComponent * PlayerInputComponent)
 {
@@ -57,7 +60,7 @@ void AHumanCharacter::Tick(float DeltaTime)
 
 void AHumanCharacter::swapL()
 {
-	
+
 
 }
 
@@ -70,17 +73,17 @@ void AHumanCharacter::applyWeaponDamage(AWeapon * weapon)
 	
 	
 		UE_LOG(LogTemp, Warning, TEXT("current health : %f"), currentHealth);
+		
 		if (animInstance->Montage_IsActive(reactMontage[0]))
-			return;
+		{
+			animInstance->Montage_Play(reactMontage[1]);
+		}
+			
 		if (weapon->canApplyDamage == true)
-				
 		{
 			
 			weapon->setDamage(currentHealth);
 			animInstance->Montage_Play(reactMontage[0], 1.3f);
-			
-		
-			
 		}
 	
 	if (currentHealth <= 0)
@@ -91,6 +94,11 @@ bool AHumanCharacter::isReactionAnimationPlaying()
 {
 	// needs to be done
 	return false;
+}
+
+void AHumanCharacter::setAttackHitDirection()
+{
+	UE_LOG(LogTemp, Warning, TEXT("setAttackHitDirection called"));
 }
 
 

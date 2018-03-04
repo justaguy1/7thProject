@@ -89,6 +89,25 @@ protected:
 	UPROPERTY(BlueprintReadWrite)
 		bool canPlayAnotherAnimation = false;
 
-	bool isReactionAnimationPlaying();
+		bool isReactionAnimationPlaying();
 
+	UPROPERTY(BlueprintReadWrite)
+		bool rightHit = false, leftHit = false, frontHit = false, backHit = false;
+
+	UPROPERTY(BlueprintReadWrite)
+		FVector selfForwardDirection;
+	
+	UPROPERTY(BlueprintReadWrite)
+	FVector opponentForwardDirection;
+
+	UFUNCTION(BlueprintCallable)
+		virtual void setAttackHitDirection();
+
+	
+		
+
+
+	
+
+	
 };

@@ -6,6 +6,19 @@
 #include "GameFramework/Actor.h"
 #include "Weapon.generated.h"
 
+
+UENUM(BlueprintType)		
+enum class WeaponType : uint8
+{
+		
+		lightWeapon		UMETA(DisplayName = "lightWeapon"),
+		middleWeapon	UMETA(DisplayName = "middleWeapon"),
+		heavyWeapon		UMETA(DisplayName = "heavyWeapon"),
+		throwableWeapon UMETA(DisplayName ="throwableWeapon"),
+		magicWeapon		UMETA(DisplayName = "magicWeapon")
+	
+};
+
 UCLASS()
 class SEVEN_API AWeapon : public AActor
 {
@@ -35,4 +48,11 @@ public:
 	UPROPERTY(BlueprintReadWrite)
 		int noOfHitregistered = 0;
 
+	
+	
+	UFUNCTION(BlueprintCallable)
+		void setWeaponRelatedDamage();
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		WeaponType weaponType;
 };

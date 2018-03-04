@@ -38,3 +38,7 @@ void AWeapon::setDamage(float &currentHealth)
 	currentHealth -= damage;
 }
 
+void AWeapon::setWeaponRelatedDamage()
+{
+}
+
