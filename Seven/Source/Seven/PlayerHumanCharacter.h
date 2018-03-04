@@ -18,6 +18,7 @@ protected:
 
 	virtual	void setAttackHitDirection() override;
 
+	UPROPERTY(BlueprintReadWrite)
 	class AAIHumanCharacter* enemy =nullptr;
 
 	UFUNCTION(BlueprintCallable)
