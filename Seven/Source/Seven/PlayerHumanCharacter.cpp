@@ -6,9 +6,67 @@
 #include "Engine/World.h"
 #include "EngineUtils.h"
 
+
+void APlayerHumanCharacter::BeginPlay()
+{
+	Super::BeginPlay();
+}
+
+void APlayerHumanCharacter::Tick(float DeltaTime)
+{
+	Super::Tick(DeltaTime);
+	setAttackHitDirection();
+}
+
 void APlayerHumanCharacter::setAttackHitDirection()
 {
+	if (!enemy) return;
+	FVector character_direction = GetActorForwardVector();
+	character_direction.Normalize();
 
+	FVector enemy_direction = enemy->GetActorForwardVector();
+	enemy_direction.Normalize();
+
+	float dotprod = FVector::DotProduct(character_direction, enemy_direction);
+	FVector crossprod = FVector::CrossProduct(character_direction, enemy_direction);
+
+	
+	if(dotprod>0.7 && dotprod <=1)
+	{
+		enemy->reaction_back = true;
+		enemy->reaction_front = false;
+		enemy->reaction_left = false;
+		enemy->reaction_right = false;
+		UE_LOG(LogTemp, Warning, TEXT("back"))
+	}
+		
+	else if(dotprod > -1.0f && dotprod < -0.7f)
+	{
+		enemy->reaction_back = false;
+		enemy->reaction_front = true;
+		enemy->reaction_left = false;
+		enemy->reaction_right = false;
+		UE_LOG(LogTemp, Warning, TEXT("front"))
+	}
+
+	else if(crossprod.Z>0.7 && crossprod.Z<=1)
+	{
+		enemy->reaction_back = false;
+		enemy->reaction_front = false;
+		enemy->reaction_left = false;
+		enemy->reaction_right = true;
+		UE_LOG(LogTemp, Warning, TEXT("right "))
+	}
+
+	else if (crossprod.Z < 0.7 && crossprod.Z >= -1)
+	{
+		enemy->reaction_back = false;
+		enemy->reaction_front = false;
+		enemy->reaction_left =true;
+		enemy->reaction_right = false;
+		UE_LOG(LogTemp, Warning, TEXT("left"))
+	}
+	
 }
 
 void APlayerHumanCharacter::TargetEnemy()
@@ -49,5 +107,6 @@ void APlayerHumanCharacter::TargetEnemy()
 			enemy->targeted = true;
 		}
 		
-
+		//setAttackHitDirection();
 }
+

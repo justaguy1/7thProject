@@ -76,14 +76,24 @@ void AHumanCharacter::applyWeaponDamage(AWeapon * weapon)
 		
 		if (animInstance->Montage_IsActive(reactMontage[0]))
 		{
-			animInstance->Montage_Play(reactMontage[1]);
+		//	animInstance->Montage_Play(reactMontage[1]);
+			return;
 		}
 			
 		if (weapon->canApplyDamage == true)
 		{
 			
 			weapon->setDamage(currentHealth);
-			animInstance->Montage_Play(reactMontage[0], 1.3f);
+			if(reaction_right==true)
+				animInstance->Montage_Play(reactMontage[1], 1.3f);
+			else if(reaction_left==true)
+				animInstance->Montage_Play(reactMontage[0], 1.3f);
+			else if(reaction_front==true)
+				animInstance->Montage_Play(reactMontage[0], 1.3f);
+			else if (reaction_back == true)
+				animInstance->Montage_Play(reactMontage[1], 1.3f);
+
+
 		}
 	
 	if (currentHealth <= 0)

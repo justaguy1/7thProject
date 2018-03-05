@@ -15,7 +15,7 @@ class SEVEN_API APlayerHumanCharacter : public AHumanCharacter
 	GENERATED_BODY()
 	
 protected:
-
+	virtual void BeginPlay() override;
 	virtual	void setAttackHitDirection() override;
 
 	UPROPERTY(BlueprintReadWrite)
@@ -27,5 +27,7 @@ protected:
 	float distance=1000.f;
 	
 	
+public:
+	virtual void Tick(float DeltaTime) override;
 	
 };

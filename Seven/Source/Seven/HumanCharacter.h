@@ -56,6 +56,9 @@ public:
 
 	void swapL();
 
+	UPROPERTY(BlueprintReadWrite)
+		bool reaction_left = false, reaction_right = false, reaction_front = false, reaction_back = false;
+
 protected:
 	UPROPERTY(BlueprintReadWrite, Category = "Player")
 		float maxHealth = NULL;
@@ -91,8 +94,7 @@ protected:
 
 		bool isReactionAnimationPlaying();
 
-	UPROPERTY(BlueprintReadWrite)
-		bool rightHit = false, leftHit = false, frontHit = false, backHit = false;
+		
 
 	UPROPERTY(BlueprintReadWrite)
 		FVector selfForwardDirection;
