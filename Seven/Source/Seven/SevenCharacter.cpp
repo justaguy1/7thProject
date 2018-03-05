@@ -99,6 +99,7 @@ void ASevenCharacter::TouchStopped(ETouchIndex::Type FingerIndex, FVector Locati
 void ASevenCharacter::TurnAtRate(float Rate)
 {
 	// calculate delta for this frame from the rate information
+
 	AddControllerYawInput(Rate * BaseTurnRate * GetWorld()->GetDeltaSeconds());
 }
 

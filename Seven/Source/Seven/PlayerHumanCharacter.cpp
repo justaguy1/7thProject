@@ -14,7 +14,7 @@ void APlayerHumanCharacter::setAttackHitDirection()
 void APlayerHumanCharacter::TargetEnemy()
 {
 	AAIHumanCharacter *tempEnemy = enemy;
-	distance = 2000;
+	distance = 1000;
 	if (enemy)
 		enemy->targeted = false;
 	TArray<AAIHumanCharacter*> foundActor;
@@ -34,7 +34,7 @@ void APlayerHumanCharacter::TargetEnemy()
 	}
 	
 	
-		
+	if (!enemy) return;
 		if(tempEnemy ==enemy)
 		{
 			enemy->targeted = false;
