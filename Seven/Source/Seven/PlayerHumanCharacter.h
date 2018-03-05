@@ -16,7 +16,7 @@ class SEVEN_API APlayerHumanCharacter : public AHumanCharacter
 	
 protected:
 	virtual void BeginPlay() override;
-	virtual	void setAttackHitDirection() override;
+	
 
 	UPROPERTY(BlueprintReadWrite)
 	class AAIHumanCharacter* enemy =nullptr;

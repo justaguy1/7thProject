@@ -84,7 +84,7 @@ protected:
 
 
 	UFUNCTION(BlueprintCallable)
-	void applyWeaponDamage(AWeapon *weapon);
+	void applyWeaponDamage(AWeapon *weapon,AHumanCharacter *player_c,AHumanCharacter *enemy_c);
 
 	UPROPERTY(BlueprintReadWrite)
 		bool canApplyDamage = false;
@@ -102,8 +102,6 @@ protected:
 	UPROPERTY(BlueprintReadWrite)
 	FVector opponentForwardDirection;
 
-	UFUNCTION(BlueprintCallable)
-		virtual void setAttackHitDirection();
 
 	
 		

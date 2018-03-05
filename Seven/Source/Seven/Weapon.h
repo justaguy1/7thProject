@@ -41,7 +41,7 @@ public:
 		float weaponDamage = 15.f;
 
 	UFUNCTION(BlueprintCallable)
-		void setDamage(float &currentHealth);
+		void setDamage(float &currentHealth,class AHumanCharacter *player, AHumanCharacter *enemy);
 
 	UPROPERTY(BlueprintReadWrite)
 		bool canApplyDamage = false;

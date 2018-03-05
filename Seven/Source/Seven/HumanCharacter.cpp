@@ -64,38 +64,37 @@ void AHumanCharacter::swapL()
 
 }
 
-void AHumanCharacter::applyWeaponDamage(AWeapon * weapon)
+
+void AHumanCharacter::applyWeaponDamage(AWeapon * weapon, AHumanCharacter *player_c, AHumanCharacter *enemy_c)
 {
-	
 	if (!weapon) return;
+	if (!player_c) return;
+	if (!enemy_c)return;
 
-	
-	
-	
-		UE_LOG(LogTemp, Warning, TEXT("current health : %f"), currentHealth);
-		
-		if (animInstance->Montage_IsActive(reactMontage[0]))
-		{
+	UE_LOG(LogTemp, Warning, TEXT("current health : %f"), currentHealth);
+
+	if (animInstance->Montage_IsActive(reactMontage[0]))
+	{
 		//	animInstance->Montage_Play(reactMontage[1]);
-			return;
-		}
-			
-		if (weapon->canApplyDamage == true)
-		{
-			
-			weapon->setDamage(currentHealth);
-			if(reaction_right==true)
-				animInstance->Montage_Play(reactMontage[1], 1.3f);
-			else if(reaction_left==true)
-				animInstance->Montage_Play(reactMontage[0], 1.3f);
-			else if(reaction_front==true)
-				animInstance->Montage_Play(reactMontage[0], 1.3f);
-			else if (reaction_back == true)
-				animInstance->Montage_Play(reactMontage[1], 1.3f);
+		return;
+	}
+
+	if (weapon->canApplyDamage == true)
+	{
+
+			weapon->setDamage(currentHealth,player_c,enemy_c);
+		if (reaction_right == true)
+			animInstance->Montage_Play(reactMontage[1], 1.3f);
+		else if (reaction_left == true)
+			animInstance->Montage_Play(reactMontage[0], 1.3f);
+		else if (reaction_front == true)
+			animInstance->Montage_Play(reactMontage[0], 1.3f);
+		else if (reaction_back == true)
+			animInstance->Montage_Play(reactMontage[1], 1.3f);
 
 
-		}
-	
+	}
+
 	if (currentHealth <= 0)
 		Destroy(true);
 }
@@ -106,10 +105,6 @@ bool AHumanCharacter::isReactionAnimationPlaying()
 	return false;
 }
 
-void AHumanCharacter::setAttackHitDirection()
-{
-	UE_LOG(LogTemp, Warning, TEXT("setAttackHitDirection called"));
-}
 
 
 
