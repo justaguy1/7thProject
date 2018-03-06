@@ -13,13 +13,26 @@ UCLASS()
 class SEVEN_API AAIHumanCharacter : public AHumanCharacter
 {
 	GENERATED_BODY()
-	
+
+protected:
+	virtual void BeginPlay() override;
 public:
-	UFUNCTION(BlueprintCallable)
-		virtual void targetMe();
+
+	AAIHumanCharacter();
 
 	UPROPERTY(BlueprintReadWrite)
 		bool targeted = false;
+
 	
+	UPROPERTY(BlueprintReadWrite) // distance between player and enemy
+		float playerDistance = 2000.f;
+	UPROPERTY(BlueprintReadWrite)
+		float previous_health;
+	UPROPERTY(BlueprintReadWrite)// position where actor was first placed in world
+		FVector originalpos;
+	UPROPERTY(BlueprintReadWrite)
+		bool PlayerIsInSight = false;
+
+	virtual void Tick(float DeltaTime) override;
 	
 };

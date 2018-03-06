@@ -17,15 +17,18 @@ class SEVEN_API AHumanCharacter : public ASevenCharacter
 public:
 	AHumanCharacter();
 	
+	
 protected:
 	/* setting up all inputs*/
 	virtual void SetupPlayerInputComponent(UInputComponent * PlayerInputComponent) override;
 
 	/*called when left mouseButton Clicked*/
-	void AttackL();
+	virtual void AttackL();
 
 	/*called when right mouse button clicked*/
-	void AttackR();
+	virtual void AttackR();
+
+	
 
 	
 	
@@ -38,7 +41,7 @@ protected:
 	UPROPERTY(BlueprintReadWrite)
 		bool IsInAir  = false;
 
-	APlayerController* controller;
+	
 	
 
 	virtual void BeginPlay() override;
@@ -94,13 +97,17 @@ protected:
 
 		bool isReactionAnimationPlaying();
 
-		
+	UPROPERTY(BlueprintReadWrite) // returns if enemy is hostile to player
+			bool isAngry = false;
 
 	UPROPERTY(BlueprintReadWrite)
 		FVector selfForwardDirection;
 	
 	UPROPERTY(BlueprintReadWrite)
 	FVector opponentForwardDirection;
+
+	UPROPERTY(BlueprintReadWrite)
+		bool OwnerisPlayer = false;
 
 
 	

@@ -43,7 +43,15 @@ void AHumanCharacter::Tick(float DeltaTime)
 
 	if (animInstance != nullptr)
 		isMontageplaying = animInstance->IsAnyMontagePlaying();
-	canWalk = !isMontageplaying;
+		
+	if (isReactionAnimationPlaying())
+	{
+		canWalk = true;
+	}
+	else
+	{
+		canWalk = !isMontageplaying;
+	}
 
 	if (canWalk)
 		GetCharacterMovement()->JumpZVelocity = 600;
@@ -83,6 +91,8 @@ void AHumanCharacter::applyWeaponDamage(AWeapon * weapon, AHumanCharacter *playe
 	{
 
 			weapon->setDamage(currentHealth,player_c,enemy_c);
+			UE_LOG(LogTemp,Warning,TEXT("called"))
+			enemy_c->isAngry = true;
 		if (reaction_right == true)
 			animInstance->Montage_Play(reactMontage[1], 1.3f);
 		else if (reaction_left == true)
@@ -101,7 +111,9 @@ void AHumanCharacter::applyWeaponDamage(AWeapon * weapon, AHumanCharacter *playe
 
 bool AHumanCharacter::isReactionAnimationPlaying()
 {
-	// needs to be done
+	if (reaction_back == true || reaction_front == true || reaction_left == true || reaction_right == true)
+		return true;
+
 	return false;
 }
 
@@ -135,5 +147,6 @@ void AHumanCharacter::AttackR()
 	if (!IsInAir)
 	animInstance->Montage_Play(attackMontage[1]);
 }
+
 
 

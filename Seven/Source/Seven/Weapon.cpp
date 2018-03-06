@@ -86,6 +86,7 @@ void AWeapon::setDamage(float & currentHealth, AHumanCharacter * player, AHumanC
 	damage = FMath::RandRange(damage, weaponDamage);
 
 	currentHealth -= damage;
+	
 }
 
 void AWeapon::setWeaponRelatedDamage()

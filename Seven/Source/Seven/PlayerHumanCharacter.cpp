@@ -10,12 +10,28 @@
 void APlayerHumanCharacter::BeginPlay()
 {
 	Super::BeginPlay();
+	OwnerisPlayer = true;
 }
 
 void APlayerHumanCharacter::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
+	setPlayerHuds();
 	
+}
+
+AAIHumanCharacter * APlayerHumanCharacter::checkForAllEnemy()
+{
+	TArray<AAIHumanCharacter*> foundActor;
+
+
+	for (TActorIterator<AAIHumanCharacter> enemyToFind(GetWorld()); enemyToFind; ++enemyToFind)
+	{
+
+		return *enemyToFind;
+		
+	}
+	return nullptr;
 }
 
 void APlayerHumanCharacter::TargetEnemy()
@@ -25,7 +41,7 @@ void APlayerHumanCharacter::TargetEnemy()
 	if (enemy)
 		enemy->targeted = false;
 	TArray<AAIHumanCharacter*> foundActor;
-	int i = 0;
+	
 	
 	for (TActorIterator<AAIHumanCharacter> enemyToFind(GetWorld()); enemyToFind; ++enemyToFind)
 	{
@@ -56,5 +72,13 @@ void APlayerHumanCharacter::TargetEnemy()
 			enemy->targeted = true;
 		}
 		
+}
+
+void APlayerHumanCharacter::setPlayerHuds()
+{
+	health = currentHealth / maxHealth;
+	stamina = currentStamina / maxStamina;
+	mana = currentMana / maxMana;
+
 }
 

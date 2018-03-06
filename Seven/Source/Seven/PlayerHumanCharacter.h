@@ -29,5 +29,7 @@ protected:
 	
 public:
 	virtual void Tick(float DeltaTime) override;
+	class AAIHumanCharacter* checkForAllEnemy();
+	void setPlayerHuds();
 	
 };
