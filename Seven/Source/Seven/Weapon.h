@@ -55,4 +55,6 @@ public:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		WeaponType weaponType;
+	UPROPERTY(BlueprintReadWrite)
+		bool ispossessed = false;
 };

@@ -60,7 +60,14 @@ public:
 	void swapL();
 
 	UPROPERTY(BlueprintReadWrite)
-		bool reaction_left = false, reaction_right = false, reaction_front = false, reaction_back = false;
+		bool reaction_left = false;
+	UPROPERTY(BlueprintReadWrite)
+		bool reaction_front = false;
+	UPROPERTY(BlueprintReadWrite)
+		bool reaction_back = false;
+	UPROPERTY(BlueprintReadWrite)
+		bool reaction_right = false;
+	
 
 protected:
 	UPROPERTY(BlueprintReadWrite, Category = "Player")

@@ -22,6 +22,8 @@ AHumanCharacter::AHumanCharacter()
 
 	selfForwardDirection = FVector(0, 0, 0);
 	opponentForwardDirection = selfForwardDirection;
+
+	
 }
 void AHumanCharacter::SetupPlayerInputComponent(UInputComponent * PlayerInputComponent)
 {
@@ -52,6 +54,7 @@ void AHumanCharacter::Tick(float DeltaTime)
 	{
 		canWalk = !isMontageplaying;
 	}
+	
 
 	if (canWalk)
 		GetCharacterMovement()->JumpZVelocity = 600;
@@ -81,11 +84,6 @@ void AHumanCharacter::applyWeaponDamage(AWeapon * weapon, AHumanCharacter *playe
 
 	UE_LOG(LogTemp, Warning, TEXT("current health : %f"), currentHealth);
 
-	if (animInstance->Montage_IsActive(reactMontage[0]))
-	{
-		//	animInstance->Montage_Play(reactMontage[1]);
-		return;
-	}
 
 	if (weapon->canApplyDamage == true)
 	{
@@ -102,7 +100,8 @@ void AHumanCharacter::applyWeaponDamage(AWeapon * weapon, AHumanCharacter *playe
 		else if (reaction_back == true)
 			animInstance->Montage_Play(reactMontage[1], 1.3f);
 
-
+	
+		
 	}
 
 	if (currentHealth <= 0)
