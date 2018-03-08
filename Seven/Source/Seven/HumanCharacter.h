@@ -28,6 +28,8 @@ protected:
 	/*called when right mouse button clicked*/
 	virtual void AttackR();
 
+	void throwProjectiles();
+
 	
 
 	
@@ -115,13 +117,18 @@ protected:
 
 	UPROPERTY(BlueprintReadWrite)
 		bool OwnerisPlayer = false;
+	UPROPERTY(BlueprintReadWrite)
+		bool targetIsLocked = false;
 
 
 	
-		
+	UPROPERTY(EditAnywhere,BlueprintReadWrite)
+		TSubclassOf<class AMyProjectiles> projectileBlueprint;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		float ProjectilelaunchSpeed = 1500;
 
 
-	
 
 	
 };

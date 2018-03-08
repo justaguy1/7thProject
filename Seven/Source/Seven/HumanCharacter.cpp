@@ -5,6 +5,8 @@
 #include "Weapon.h"
 #include "Animation/AnimInstance.h"
 #include "Animation/AnimMontage.h"
+#include "MyProjectiles.h"
+
 
 AHumanCharacter::AHumanCharacter()
 {
@@ -104,8 +106,14 @@ void AHumanCharacter::applyWeaponDamage(AWeapon * weapon, AHumanCharacter *playe
 		
 	}
 
+	
 	if (currentHealth <= 0)
+	{
 		Destroy(true);
+		
+	}
+			
+
 }
 
 bool AHumanCharacter::isReactionAnimationPlaying()
@@ -145,6 +153,19 @@ void AHumanCharacter::AttackR()
 
 	if (!IsInAir)
 	animInstance->Montage_Play(attackMontage[1]);
+	throwProjectiles();
+}
+
+void AHumanCharacter::throwProjectiles()
+{
+	if (!projectileBlueprint) return;
+	auto projectiles =GetWorld()->SpawnActor<AMyProjectiles>
+		(
+			projectileBlueprint,
+			GetMesh()->GetSocketLocation(FName("Head")),
+			GetMesh()->GetRightVector().Rotation()
+		);
+	projectiles->launchProjectile(ProjectilelaunchSpeed);
 }
 
 
