@@ -18,6 +18,7 @@ void APlayerHumanCharacter::Tick(float DeltaTime)
 	Super::Tick(DeltaTime);
 	setPlayerHuds();
 	
+	
 }
 
 AAIHumanCharacter * APlayerHumanCharacter::checkForAllEnemy()
@@ -52,6 +53,7 @@ void APlayerHumanCharacter::TargetEnemy()
 		{
 			distance = tempDistance;
 			enemy = *enemyToFind;
+			target = enemy;
 		}
 		UE_LOG(LogTemp, Warning, TEXT("distance is : %f"), distance);
 	}
@@ -63,12 +65,13 @@ void APlayerHumanCharacter::TargetEnemy()
 			enemy->targeted = false;
 			enemy = nullptr;
 			tempEnemy = nullptr;
-			UE_LOG(LogTemp, Warning, TEXT("enemy target false"));
+			target = nullptr;
+		//	UE_LOG(LogTemp, Warning, TEXT("enemy target false"));
 		}
 		else
 		{
-			FString name = enemy->GetName();
-			UE_LOG(LogTemp, Warning, TEXT("name is %s"),*name);
+			/*FString name = enemy->GetName();
+			UE_LOG(LogTemp, Warning, TEXT("name is %s"),*name);*/
 			enemy->targeted = true;
 		}
 		

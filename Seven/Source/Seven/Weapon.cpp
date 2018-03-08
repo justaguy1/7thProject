@@ -52,7 +52,7 @@ void AWeapon::setDamage(float & currentHealth, AHumanCharacter * player, AHumanC
 		enemy->reaction_front = false;
 		enemy->reaction_left = false;
 		enemy->reaction_right = false;
-		UE_LOG(LogTemp, Warning, TEXT("back"))
+		
 	}
 
 	else if (dotprod > -1.0f && dotprod < -0.7f)
@@ -61,7 +61,7 @@ void AWeapon::setDamage(float & currentHealth, AHumanCharacter * player, AHumanC
 		enemy->reaction_front = true;
 		enemy->reaction_left = false;
 		enemy->reaction_right = false;
-		UE_LOG(LogTemp, Warning, TEXT("front"))
+		
 	}
 
 	else if (crossprod.Z > 0.7 && crossprod.Z <= 1)
@@ -70,7 +70,7 @@ void AWeapon::setDamage(float & currentHealth, AHumanCharacter * player, AHumanC
 		enemy->reaction_front = false;
 		enemy->reaction_left = false;
 		enemy->reaction_right = true;
-		UE_LOG(LogTemp, Warning, TEXT("right "))
+		
 	}
 
 	else if (crossprod.Z < 0.7 && crossprod.Z >= -1)
@@ -79,7 +79,7 @@ void AWeapon::setDamage(float & currentHealth, AHumanCharacter * player, AHumanC
 		enemy->reaction_front = false;
 		enemy->reaction_left = true;
 		enemy->reaction_right = false;
-		UE_LOG(LogTemp, Warning, TEXT("left"))
+		
 	}
 
 	float damage = weaponDamage / 100 * 70;

@@ -117,10 +117,9 @@ protected:
 
 	UPROPERTY(BlueprintReadWrite)
 		bool OwnerisPlayer = false;
+
 	UPROPERTY(BlueprintReadWrite)
-		bool targetIsLocked = false;
-
-
+		AHumanCharacter* target = nullptr;
 	
 	UPROPERTY(EditAnywhere,BlueprintReadWrite)
 		TSubclassOf<class AMyProjectiles> projectileBlueprint;
@@ -128,7 +127,8 @@ protected:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		float ProjectilelaunchSpeed = 1500;
 
-
+	UFUNCTION(BlueprintCallable)
+		void applyProjectileDamage(float damage);
 
 	
 };
