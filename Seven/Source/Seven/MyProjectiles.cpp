@@ -59,7 +59,7 @@ void AMyProjectiles::launchProjectile(float projectileLaunchSpeed)
 	FVector launch = FVector::ForwardVector*projectileLaunchSpeed;
 	projectileMovement->SetVelocityInLocalSpace(launch);
 
-
+	UE_LOG(LogTemp, Warning, TEXT("hello"));
 
 
 	projectileMovement->Activate();
