@@ -2,8 +2,6 @@
 
 #include "MyProjectiles.h"
 #include "GameFramework/ProjectileMovementComponent.h"
-#include "HumanCharacter.h"
-#include "Runtime/Engine/Classes/Kismet/KismetMathLibrary.h"
 
 // Sets default values
 AMyProjectiles::AMyProjectiles()
@@ -31,6 +29,7 @@ void AMyProjectiles::Tick(float DeltaTime)
 
 }
 
+<<<<<<< HEAD
 void AMyProjectiles::launchProjectile(float projectileLaunchSpeed, bool isPlayer,AHumanCharacter *target)
 {
 	if (projectileMovement == nullptr)
@@ -55,6 +54,8 @@ void AMyProjectiles::launchProjectile(float projectileLaunchSpeed, bool isPlayer
 
 }
 
+=======
+>>>>>>> parent of 45928c8... projectile causes damage ( still unfinished )
 void AMyProjectiles::launchProjectile(float projectileLaunchSpeed)
 {
 	if (projectileMovement == nullptr)
@@ -67,8 +68,7 @@ void AMyProjectiles::launchProjectile(float projectileLaunchSpeed)
 	projectileMovement->SetVelocityInLocalSpace(launch);
 
 
-
-
 	projectileMovement->Activate();
+	UE_LOG(LogTemp, Warning, TEXT("launched wit speed %s"), *launch.ToString());
 }
 
