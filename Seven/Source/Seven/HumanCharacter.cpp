@@ -105,6 +105,7 @@ void AHumanCharacter::applyWeaponDamage(AWeapon * weapon, AHumanCharacter *playe
 	
 		
 	}
+	target = player_c;
 
 	
 	if (currentHealth <= 0)
@@ -124,12 +125,19 @@ bool AHumanCharacter::isReactionAnimationPlaying()
 	return false;
 }
 
+void AHumanCharacter::applyProjectileDamage(float damage)
+{
+	currentHealth = currentHealth - damage;
+	animInstance->Montage_Play(reactMontage[1], 1.3f);
+
+}
+
 
 
 
 void AHumanCharacter::AttackL()
 {
-	UE_LOG(LogTemp, Warning, TEXT("Attack left"));
+
 	if (!animInstance)
 	{
 		UE_LOG(LogTemp, Warning, TEXT("Some shit happened"));
@@ -144,28 +152,39 @@ void AHumanCharacter::AttackL()
 
 void AHumanCharacter::AttackR()
 {
-	UE_LOG(LogTemp, Warning, TEXT("Attack Right"));
+	
 	if (!animInstance)
 	{
 		UE_LOG(LogTemp, Warning, TEXT("Some shit happened"));
 		return;
 	}
 
-	if (!IsInAir)
-	animInstance->Montage_Play(attackMontage[1]);
+	//if (!IsInAir)
+//	animInstance->Montage_Play(attackMontage[1]);
 	throwProjectiles();
 }
 
 void AHumanCharacter::throwProjectiles()
 {
 	if (!projectileBlueprint) return;
+	FVector spawnlocation = GetMesh()->GetSocketLocation(FName("Head")) + GetActorForwardVector() * 100;
 	auto projectiles =GetWorld()->SpawnActor<AMyProjectiles>
 		(
 			projectileBlueprint,
-			GetMesh()->GetSocketLocation(FName("Head")),
+			spawnlocation,
 			GetMesh()->GetRightVector().Rotation()
 		);
-	projectiles->launchProjectile(ProjectilelaunchSpeed);
+	
+	if (target == nullptr)
+	{
+		projectiles->launchProjectile(ProjectilelaunchSpeed);
+		UE_LOG(LogTemp, Warning, TEXT("no target called"));
+	}
+	else
+	{
+		projectiles->launchProjectile(ProjectilelaunchSpeed, OwnerisPlayer, target);
+	}
+	
 }
 
 

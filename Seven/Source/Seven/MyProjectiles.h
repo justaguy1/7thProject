@@ -28,7 +28,12 @@ public:
 		bool canSpawnProjectile = false;
 	
 	UFUNCTION(BlueprintCallable)
+		void launchProjectile(float projectileLaunchSpeed,bool isPlayer, class AHumanCharacter *target);
+	
 		void launchProjectile(float projectileLaunchSpeed);
+
+		UPROPERTY(EditAnywhere,BlueprintReadWrite,Category =ProjectileProperty)
+			float projectileDamage = 50;
 
 protected:
 	UPROPERTY(EditAnywhere)
