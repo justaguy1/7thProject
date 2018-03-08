@@ -42,6 +42,7 @@ void AMyProjectiles::launchProjectile(float projectileLaunchSpeed, bool isPlayer
 	SetActorRotation(Rot);
 
 	FVector launch = FVector::ForwardVector*projectileLaunchSpeed;
+
 	projectileMovement->SetVelocityInLocalSpace(launch);
 
 	
