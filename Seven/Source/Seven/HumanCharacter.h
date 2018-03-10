@@ -9,6 +9,7 @@
 /**
  * 
  */
+
 UCLASS()
 class SEVEN_API AHumanCharacter : public ASevenCharacter
 {
@@ -59,7 +60,7 @@ public:
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "Weapons")
 		AWeapon *MyWeapon =nullptr;
 
-	void swapL();
+
 
 	UPROPERTY(BlueprintReadWrite)
 		bool reaction_left = false;

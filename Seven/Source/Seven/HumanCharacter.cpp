@@ -33,7 +33,7 @@ void AHumanCharacter::SetupPlayerInputComponent(UInputComponent * PlayerInputCom
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
 	PlayerInputComponent->BindAction("AttackL", IE_Pressed, this, &AHumanCharacter::AttackL);
 	PlayerInputComponent->BindAction("AttackR", IE_Pressed, this, &AHumanCharacter::AttackR);
-	PlayerInputComponent->BindAction("SwapWeaponL", IE_Pressed, this, &AHumanCharacter::swapL);
+
 
 	
 }
@@ -71,11 +71,6 @@ void AHumanCharacter::Tick(float DeltaTime)
 	
 }
 
-void AHumanCharacter::swapL()
-{
-
-
-}
 
 
 void AHumanCharacter::applyWeaponDamage(AWeapon * weapon, AHumanCharacter *player_c, AHumanCharacter *enemy_c)
