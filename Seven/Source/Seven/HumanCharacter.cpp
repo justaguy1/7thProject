@@ -101,13 +101,6 @@ void AHumanCharacter::applyWeaponDamage(AWeapon * weapon, AHumanCharacter *playe
 		
 	}
 	target = player_c;
-
-	
-	if (currentHealth <= 0)
-	{
-		Destroy(true);
-		
-	}
 			
 
 }

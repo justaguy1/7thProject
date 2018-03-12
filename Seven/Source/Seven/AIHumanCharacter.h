@@ -34,5 +34,8 @@ public:
 		bool PlayerIsInSight = false;
 
 	virtual void Tick(float DeltaTime) override;
+
+	void AttackPlayer();
+	void removePlayer();
 	
 };

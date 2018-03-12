@@ -1,6 +1,7 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 #include "AIHumanCharacter.h"
+#include "Weapon.h"
 
 AAIHumanCharacter::AAIHumanCharacter()
 {
@@ -16,21 +17,46 @@ void AAIHumanCharacter::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
+	
+	AttackPlayer();
+	removePlayer();
+	
+}
+void AAIHumanCharacter::removePlayer()
+{
+	if (currentHealth <= 0)
+	{
+		if (MyWeapon)
+		{
+			UE_LOG(LogTemp,Warning,TEXT("weapon is valid "))
+			MyWeapon->ispossessed = false;
+		}
+		else
+		{
+			UE_LOG(LogTemp, Warning, TEXT("weapon is not valid "))
+		}
+		
+
+		Destroy();
+
+	}
+}
+void AAIHumanCharacter::AttackPlayer()
+{
 	if (playerDistance > 2000.f)
 	{
 		PlayerIsInSight = false;
 		isAngry = false;
-		
+
 	}
-	if (playerDistance <200)
+	if (playerDistance < 200)
 	{
 		if (isMontageplaying) return;
 		animInstance->Montage_Play(attackMontage[0]);
 	}
-		
+
 	if (PlayerIsInSight == true)
 		isAngry = true;
-
 }
 
 
