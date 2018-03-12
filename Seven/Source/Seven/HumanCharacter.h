@@ -20,8 +20,7 @@ public:
 	
 	
 protected:
-	/* setting up all inputs*/
-	virtual void SetupPlayerInputComponent(UInputComponent * PlayerInputComponent) override;
+	
 
 	/*called when left mouseButton Clicked*/
 	virtual void AttackL();

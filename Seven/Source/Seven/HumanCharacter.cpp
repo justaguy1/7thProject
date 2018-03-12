@@ -27,16 +27,7 @@ AHumanCharacter::AHumanCharacter()
 
 	
 }
-void AHumanCharacter::SetupPlayerInputComponent(UInputComponent * PlayerInputComponent)
-{
-	check(PlayerInputComponent);
-	Super::SetupPlayerInputComponent(PlayerInputComponent);
-	PlayerInputComponent->BindAction("AttackL", IE_Pressed, this, &AHumanCharacter::AttackL);
-	PlayerInputComponent->BindAction("AttackR", IE_Pressed, this, &AHumanCharacter::AttackR);
 
-
-	
-}
 void AHumanCharacter::BeginPlay()
 {
 	Super::BeginPlay();
@@ -65,9 +56,6 @@ void AHumanCharacter::Tick(float DeltaTime)
 
 	if (MyWeapon == nullptr) return;
 	MyWeapon->canApplyDamage = canApplyDamage;
-
-
-	//UE_LOG(LogTemp, Warning, TEXT("hit registered %f"), MyWeapon->noOfHitregistered);
 	
 }
 
@@ -78,9 +66,6 @@ void AHumanCharacter::applyWeaponDamage(AWeapon * weapon, AHumanCharacter *playe
 	if (!weapon) return;
 	if (!player_c) return;
 	if (!enemy_c)return;
-
-	UE_LOG(LogTemp, Warning, TEXT("current health : %f"), currentHealth);
-
 
 	if (weapon->canApplyDamage == true)
 	{
@@ -97,8 +82,6 @@ void AHumanCharacter::applyWeaponDamage(AWeapon * weapon, AHumanCharacter *playe
 		else if (reaction_back == true)
 			animInstance->Montage_Play(reactMontage[1], 1.3f);
 
-	
-		
 	}
 	target = player_c;
 			
@@ -133,8 +116,6 @@ void AHumanCharacter::AttackL()
 	}
 	if(!IsInAir)
 	animInstance->Montage_Play(attackMontage[0]);
-	
-	
 	
 }
 

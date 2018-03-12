@@ -20,10 +20,20 @@ void APlayerHumanCharacter::Tick(float DeltaTime)
 	
 	
 }
+void APlayerHumanCharacter::SetupPlayerInputComponent(UInputComponent * PlayerInputComponent)
+{
+	check(PlayerInputComponent);
+	Super::SetupPlayerInputComponent(PlayerInputComponent);
+	PlayerInputComponent->BindAction("AttackL", IE_Pressed, this, &APlayerHumanCharacter::AttackL);
+	PlayerInputComponent->BindAction("AttackR", IE_Pressed, this, &APlayerHumanCharacter::AttackR);
+
+
+
+}
 
 AAIHumanCharacter * APlayerHumanCharacter::checkForAllEnemy()
 {
-	TArray<AAIHumanCharacter*> foundActor;
+
 
 
 	for (TActorIterator<AAIHumanCharacter> enemyToFind(GetWorld()); enemyToFind; ++enemyToFind)
