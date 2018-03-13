@@ -16,6 +16,7 @@ class SEVEN_API AAIHumanCharacter : public AHumanCharacter
 
 protected:
 	virtual void BeginPlay() override;
+	void setPlayerHuds();
 public:
 
 	AAIHumanCharacter();
@@ -36,6 +37,7 @@ public:
 	virtual void Tick(float DeltaTime) override;
 
 	void AttackPlayer();
+	
 	void removePlayer();
 	
 };

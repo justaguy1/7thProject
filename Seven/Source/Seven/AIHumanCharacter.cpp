@@ -20,6 +20,7 @@ void AAIHumanCharacter::Tick(float DeltaTime)
 	
 	AttackPlayer();
 	removePlayer();
+	setPlayerHuds();
 	
 }
 void AAIHumanCharacter::removePlayer()
@@ -57,6 +58,14 @@ void AAIHumanCharacter::AttackPlayer()
 
 	if (PlayerIsInSight == true)
 		isAngry = true;
+}
+
+void AAIHumanCharacter::setPlayerHuds()
+{
+	health = currentHealth / maxHealth;
+	stamina = currentStamina / maxStamina;
+	mana = currentMana / maxMana;
+
 }
 
 
