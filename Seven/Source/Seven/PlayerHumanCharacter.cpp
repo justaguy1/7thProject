@@ -112,6 +112,8 @@ void APlayerHumanCharacter::setPlayerXP()
 	if (current_xp >= required_XP)
 	{
 		playerlevel++;
+		currentHealth = maxHealth;
+		currentMana = maxMana;
 		remainingSkillPoint = playerlevel - usedSkillPoint;
 		current_xp = (int)current_xp % (int)required_XP;
 		required_XP = required_XP + xp_required_rate*required_XP / 100;
