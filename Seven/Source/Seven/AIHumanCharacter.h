@@ -39,5 +39,8 @@ public:
 	void AttackPlayer();
 	
 	void removePlayer();
+
+	UPROPERTY(EditDefaultsOnly,BlueprintReadWrite)
+	float AI_XP = 100.f;
 	
 };

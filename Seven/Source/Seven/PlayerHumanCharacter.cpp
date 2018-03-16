@@ -7,6 +7,12 @@
 #include "EngineUtils.h"
 
 
+APlayerHumanCharacter::APlayerHumanCharacter()
+{
+	current_xp = 0.f;
+	required_XP = 1000;
+	xp = current_xp / required_XP;
+}
 void APlayerHumanCharacter::BeginPlay()
 {
 	Super::BeginPlay();
@@ -16,7 +22,11 @@ void APlayerHumanCharacter::BeginPlay()
 void APlayerHumanCharacter::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
-	setPlayerHuds();
+	setPlayerHuds(); // it related to hud
+	setPlayerXP(); // it is only related to hud
+
+	UE_LOG(LogTemp, Warning, TEXT("current xp : %f"), current_xp)
+	UE_LOG(LogTemp, Warning, TEXT("required xp : %f"), required_XP)
 	
 	
 }
@@ -93,5 +103,24 @@ void APlayerHumanCharacter::setPlayerHuds()
 	stamina = currentStamina / maxStamina;
 	mana = currentMana / maxMana;
 
+}
+
+void APlayerHumanCharacter::setPlayerXP()
+{
+	
+	xp = current_xp / required_XP;
+	if (current_xp >= required_XP)
+	{
+		playerlevel++;
+		remainingSkillPoint = playerlevel - usedSkillPoint;
+		current_xp = (int)current_xp % (int)required_XP;
+		required_XP = required_XP + xp_required_rate*required_XP / 100;
+	}
+
+}
+
+void APlayerHumanCharacter::gainXP(AAIHumanCharacter * enemy)
+{
+	current_xp = current_xp + enemy->AI_XP;
 }
 
