@@ -59,7 +59,8 @@ void AAIHumanCharacter::AttackPlayer()
 	}
 	if (playerDistance < 200)
 	{
-		if (isMontageplaying) return;
+		//if (isMontageplaying) return;
+		if(!isMontageplaying)
 		animInstance->Montage_Play(attackMontage[0]);
 	}
 
