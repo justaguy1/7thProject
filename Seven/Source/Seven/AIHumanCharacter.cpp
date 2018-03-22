@@ -9,9 +9,7 @@ AAIHumanCharacter::AAIHumanCharacter()
 {
 	previous_health = currentHealth;
 	originalpos = GetActorLocation();
-	
 
-	
 }
 void AAIHumanCharacter::BeginPlay()
 {
@@ -53,6 +51,7 @@ void AAIHumanCharacter::removePlayer()
 }
 void AAIHumanCharacter::AttackPlayer()
 {
+	UE_LOG(LogTemp,Warning,TEXT("distance %f "),playerDistance)
 	if (playerDistance > 2000.f)
 	{
 		PlayerIsInSight = false;
@@ -76,6 +75,7 @@ void AAIHumanCharacter::setPlayerHuds()
 	stamina = currentStamina / maxStamina;
 	mana = currentMana / maxMana;
 
+	
 }
 
 
