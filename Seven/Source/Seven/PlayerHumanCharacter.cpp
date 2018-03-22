@@ -5,13 +5,28 @@
 #include "Runtime/Engine/Classes/Kismet/GameplayStatics.h"
 #include "Engine/World.h"
 #include "EngineUtils.h"
+#include "Camera/CameraComponent.h"
+#include "GameFramework/SpringArmComponent.h"
 
 
 APlayerHumanCharacter::APlayerHumanCharacter()
 {
+	// Create a camera boom (pulls in towards the player if there is a collision)
+	CameraBoom = CreateDefaultSubobject<USpringArmComponent>(TEXT("CameraBoom"));
+	CameraBoom->SetupAttachment(RootComponent);
+	CameraBoom->TargetArmLength = 300.0f; // The camera follows at this distance behind the character	
+	CameraBoom->bUsePawnControlRotation = true; // Rotate the arm based on the controller
+
+												// Create a follow camera
+	FollowCamera = CreateDefaultSubobject<UCameraComponent>(TEXT("FollowCamera"));
+	FollowCamera->SetupAttachment(CameraBoom, USpringArmComponent::SocketName); // Attach the camera to the end of the boom and let the boom adjust to match the controller orientation
+	FollowCamera->bUsePawnControlRotation = false; // Camera does not rotate relative to arm
+
 	current_xp = 0.f;
 	required_XP = 1000;
 	xp = current_xp / required_XP;
+
+	
 }
 void APlayerHumanCharacter::BeginPlay()
 {
@@ -25,8 +40,7 @@ void APlayerHumanCharacter::Tick(float DeltaTime)
 	setPlayerHuds(); // it related to hud
 	setPlayerXP(); // it is only related to hud
 
-	UE_LOG(LogTemp, Warning, TEXT("current xp : %f"), current_xp)
-	UE_LOG(LogTemp, Warning, TEXT("required xp : %f"), required_XP)
+
 	
 	
 }

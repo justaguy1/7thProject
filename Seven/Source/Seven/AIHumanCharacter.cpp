@@ -10,6 +10,8 @@ AAIHumanCharacter::AAIHumanCharacter()
 	previous_health = currentHealth;
 	originalpos = GetActorLocation();
 	
+
+	
 }
 void AAIHumanCharacter::BeginPlay()
 {
