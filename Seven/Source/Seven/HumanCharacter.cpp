@@ -106,32 +106,7 @@ void AHumanCharacter::applyProjectileDamage(float damage)
 
 
 
-void AHumanCharacter::AttackL()
-{
 
-	if (!animInstance)
-	{
-		UE_LOG(LogTemp, Warning, TEXT("Some shit happened"));
-		return;
-	}
-	if(!IsInAir)
-	animInstance->Montage_Play(attackMontage[0]);
-	
-}
-
-void AHumanCharacter::AttackR()
-{
-	
-	if (!animInstance)
-	{
-		UE_LOG(LogTemp, Warning, TEXT("Some shit happened"));
-		return;
-	}
-
-	//if (!IsInAir)
-//	animInstance->Montage_Play(attackMontage[1]);
-	throwProjectiles();
-}
 
 void AHumanCharacter::throwProjectiles()
 {

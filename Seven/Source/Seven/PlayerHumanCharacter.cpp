@@ -77,7 +77,7 @@ void APlayerHumanCharacter::TargetEnemy()
 		enemy->targeted = false;
 	TArray<AAIHumanCharacter*> foundActor;
 	
-	
+	// used to find all actors of class AAIHumanCharacter
 	for (TActorIterator<AAIHumanCharacter> enemyToFind(GetWorld()); enemyToFind; ++enemyToFind)
 	{
 		
@@ -138,5 +138,32 @@ void APlayerHumanCharacter::setPlayerXP()
 void APlayerHumanCharacter::gainXP(AAIHumanCharacter * enemy)
 {
 	current_xp = current_xp + enemy->AI_XP;
+}
+
+void AHumanCharacter::AttackL()
+{
+	if (!MyWeapon) return;
+	if (!animInstance)
+	{
+		UE_LOG(LogTemp, Warning, TEXT("Some shit happened"));
+		return;
+	}
+	if (!IsInAir)
+		animInstance->Montage_Play(attackMontage[0]);
+
+}
+
+void AHumanCharacter::AttackR()
+{
+
+	if (!animInstance)
+	{
+		UE_LOG(LogTemp, Warning, TEXT("Some shit happened"));
+		return;
+	}
+
+	//if (!IsInAir)
+	//	animInstance->Montage_Play(attackMontage[1]);
+	throwProjectiles();
 }
 

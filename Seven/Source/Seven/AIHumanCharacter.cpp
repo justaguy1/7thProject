@@ -51,7 +51,9 @@ void AAIHumanCharacter::removePlayer()
 }
 void AAIHumanCharacter::AttackPlayer()
 {
-	UE_LOG(LogTemp,Warning,TEXT("distance %f "),playerDistance)
+	UE_LOG(LogTemp, Warning, TEXT("distance %f "), playerDistance)
+		if (!MyWeapon) return;
+		
 	if (playerDistance > 4000.f)
 	{
 		PlayerIsInSight = false;
@@ -61,12 +63,15 @@ void AAIHumanCharacter::AttackPlayer()
 	if (playerDistance < 200)
 	{
 		//if (isMontageplaying) return;
-		if(!isMontageplaying)
-		animInstance->Montage_Play(attackMontage[0]);
+		if (!isMontageplaying)
+			animInstance->Montage_Play(attackMontage[0]);
 	}
+
 
 	if (PlayerIsInSight == true)
 		isAngry = true;
+
+	
 }
 
 void AAIHumanCharacter::setPlayerHuds()
