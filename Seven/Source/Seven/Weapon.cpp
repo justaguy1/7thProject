@@ -89,7 +89,4 @@ void AWeapon::setDamage(float & currentHealth, AHumanCharacter * player, AHumanC
 	
 }
 
-void AWeapon::setWeaponRelatedDamage()
-{
-}
 

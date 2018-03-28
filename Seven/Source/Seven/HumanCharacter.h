@@ -22,12 +22,6 @@ public:
 protected:
 	
 
-	/*called when left mouseButton Clicked*/
-	virtual void AttackL();
-
-	/*called when right mouse button clicked*/
-	virtual void AttackR();
-
 	void throwProjectiles();
 
 	
@@ -69,6 +63,8 @@ public:
 		bool reaction_back = false;
 	UPROPERTY(BlueprintReadWrite)
 		bool reaction_right = false;
+	UPROPERTY(BlueprintReadWrite)
+		bool isAttackMontagePlaying = false;
 	
 
 protected:

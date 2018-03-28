@@ -9,6 +9,7 @@
 #include "GameFramework/SpringArmComponent.h"
 
 
+
 APlayerHumanCharacter::APlayerHumanCharacter()
 {
 	// Create a camera boom (pulls in towards the player if there is a collision)
@@ -39,6 +40,7 @@ void APlayerHumanCharacter::Tick(float DeltaTime)
 	Super::Tick(DeltaTime);
 	setPlayerHuds(); // it related to hud
 	setPlayerXP(); // it is only related to hud
+	
 
 
 	
@@ -138,9 +140,10 @@ void APlayerHumanCharacter::setPlayerXP()
 void APlayerHumanCharacter::gainXP(AAIHumanCharacter * enemy)
 {
 	current_xp = current_xp + enemy->AI_XP;
+	canAttackAgain = false;
 }
 
-void AHumanCharacter::AttackL()
+void APlayerHumanCharacter::AttackL()
 {
 	if (!MyWeapon) return;
 	if (!animInstance)
@@ -148,12 +151,12 @@ void AHumanCharacter::AttackL()
 		UE_LOG(LogTemp, Warning, TEXT("Some shit happened"));
 		return;
 	}
-	if (!IsInAir)
+	if (!IsInAir && canAttackAgain)
 		animInstance->Montage_Play(attackMontage[0]);
-
+	
 }
 
-void AHumanCharacter::AttackR()
+void APlayerHumanCharacter::AttackR()
 {
 
 	if (!animInstance)

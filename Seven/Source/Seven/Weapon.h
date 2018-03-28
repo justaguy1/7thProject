@@ -45,13 +45,10 @@ public:
 
 	UPROPERTY(BlueprintReadWrite)
 		bool canApplyDamage = false;
+
+	// unused currently
 	UPROPERTY(BlueprintReadWrite)
 		int noOfHitregistered = 0;
-
-	
-	
-	UFUNCTION(BlueprintCallable)
-		void setWeaponRelatedDamage();
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		WeaponType weaponType;

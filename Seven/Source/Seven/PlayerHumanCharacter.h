@@ -64,5 +64,14 @@ public :
 	UPROPERTY(BlueprintReadWrite)
 	int remainingSkillPoint = 0;
 	void gainXP(class AAIHumanCharacter* enemy);
+
+	void AttackL();
+	void AttackR();
+
+	UPROPERTY(BlueprintReadWrite)
+		bool canAttackAgain = true;
+
+
+	
 	
 };

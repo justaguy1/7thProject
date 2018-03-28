@@ -51,7 +51,13 @@ void AAIHumanCharacter::removePlayer()
 }
 void AAIHumanCharacter::AttackPlayer()
 {
-	UE_LOG(LogTemp, Warning, TEXT("distance %f "), playerDistance)
+	bool isReloaded = (FPlatformTime::Seconds() - lastAttackedTime) > delayTimeInSeconds;
+	if (isReloaded)
+	{
+		UE_LOG(LogTemp, Warning, TEXT("distance %f "), playerDistance)
+			lastAttackedTime = FPlatformTime::Seconds();
+	}
+	
 		if (!MyWeapon) return;
 		
 	if (playerDistance > 4000.f)
@@ -63,8 +69,9 @@ void AAIHumanCharacter::AttackPlayer()
 	if (playerDistance < 200)
 	{
 		//if (isMontageplaying) return;
-		if (!isMontageplaying)
-			animInstance->Montage_Play(attackMontage[0]);
+		/*if (!isMontageplaying)
+			animInstance->Montage_Play(attackMontage[0]);*/
+		
 	}
 
 
