@@ -44,7 +44,7 @@ public:
 	float AI_XP = 100.f;
 
 	UPROPERTY(BlueprintReadWrite)
-		float delayTimeInSeconds = 3.f;
+		float delayTimeInSeconds = 2.f;
 		double lastAttackedTime=0;
 
 		bool isWithinPlayerRadius = false;

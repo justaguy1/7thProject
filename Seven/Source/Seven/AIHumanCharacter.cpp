@@ -52,13 +52,33 @@ void AAIHumanCharacter::removePlayer()
 void AAIHumanCharacter::AttackPlayer()
 {
 	bool isReloaded = (FPlatformTime::Seconds() - lastAttackedTime) > delayTimeInSeconds;
-	if (isReloaded)
+	if (!MyWeapon) return;
+	if (isReloaded && !isMontageplaying)
 	{
-		UE_LOG(LogTemp, Warning, TEXT("distance %f "), playerDistance)
+	
 			lastAttackedTime = FPlatformTime::Seconds();
+			int choose = (int)FMath::FRandRange(0, 3);
+			UE_LOG(LogTemp, Warning, TEXT("%d is random vaue"), choose)
+
+				if (playerDistance < 500)
+				{
+					if (isMontageplaying)
+					{
+						UE_LOG(LogTemp, Warning, TEXT("Montage playing"))
+							return;
+					}
+
+					/*if (!attackMontage[choose]) return;*/
+					animInstance->Montage_Play(attackMontage[choose]);
+
+
+
+
+				}
+			
 	}
 	
-		if (!MyWeapon) return;
+		
 		
 	if (playerDistance > 4000.f)
 	{
@@ -66,13 +86,7 @@ void AAIHumanCharacter::AttackPlayer()
 		isAngry = false;
 
 	}
-	if (playerDistance < 200)
-	{
-		//if (isMontageplaying) return;
-		/*if (!isMontageplaying)
-			animInstance->Montage_Play(attackMontage[0]);*/
-		
-	}
+	
 
 
 	if (PlayerIsInSight == true)

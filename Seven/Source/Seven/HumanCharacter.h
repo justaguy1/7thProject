@@ -45,10 +45,7 @@ protected:
 public:
 	virtual void Tick(float DeltaTime) override;
 
-	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "Weapons")
-		TArray< class AWeapon *> weaponR;
-	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "Weapons")
-		TArray<class AWeapon *> weaponL;
+	
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "Weapons")
 		AWeapon *MyWeapon =nullptr;
