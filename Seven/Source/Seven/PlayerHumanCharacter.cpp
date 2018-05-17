@@ -168,5 +168,7 @@ void APlayerHumanCharacter::AttackR()
 	//if (!IsInAir)
 	//	animInstance->Montage_Play(attackMontage[1]);
 	throwProjectiles();
+
+	item_Details[0].itemCount = 10;
 }
 

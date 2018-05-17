@@ -4,7 +4,9 @@
 
 #include "CoreMinimal.h"
 #include "HumanCharacter.h"
+#include "AllMyStructures.h"
 #include "PlayerHumanCharacter.generated.h"
+
 
 /**
  * 
@@ -71,7 +73,7 @@ public :
 	UPROPERTY(BlueprintReadWrite)
 		bool canAttackAgain = true;
 
-
-	
+	UPROPERTY(BlueprintReadWrite,Category=Mystruct)
+	TArray <struct FItem_details> item_Details;
 	
 };
