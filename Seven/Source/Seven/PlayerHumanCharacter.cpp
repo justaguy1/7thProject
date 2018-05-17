@@ -151,7 +151,7 @@ void APlayerHumanCharacter::AttackL()
 		UE_LOG(LogTemp, Warning, TEXT("Some shit happened"));
 		return;
 	}
-	if (!IsInAir && canAttackAgain)
+	if (!IsInAir)
 		animInstance->Montage_Play(attackMontage[0]);
 	
 }
@@ -165,10 +165,10 @@ void APlayerHumanCharacter::AttackR()
 		return;
 	}
 
-	//if (!IsInAir)
-	//	animInstance->Montage_Play(attackMontage[1]);
+	/*if (!IsInAir)
+		animInstance->Montage_Play(attackMontage[1]);*/
 	throwProjectiles();
 
-	item_Details[0].itemCount = 10;
+
 }
 

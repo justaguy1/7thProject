@@ -110,7 +110,11 @@ void AHumanCharacter::applyProjectileDamage(float damage)
 
 void AHumanCharacter::throwProjectiles()
 {
-	if (!projectileBlueprint) return;
+	if (!projectileBlueprint)
+	{
+		UE_LOG(LogTemp,Warning,TEXT("no projectile identified"))
+			return;
+	}
 	FVector spawnlocation = GetMesh()->GetSocketLocation(FName("Head")) + GetActorForwardVector() * 100;
 	auto projectiles =GetWorld()->SpawnActor<AMyProjectiles>
 		(
