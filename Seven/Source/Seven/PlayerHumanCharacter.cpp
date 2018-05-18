@@ -168,7 +168,11 @@ void APlayerHumanCharacter::AttackR()
 	/*if (!IsInAir)
 		animInstance->Montage_Play(attackMontage[1]);*/
 	throwProjectiles();
+	
+	
 
-
+	
+	
+	
 }
 

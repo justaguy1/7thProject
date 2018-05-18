@@ -22,7 +22,7 @@ struct FItem_details
 		FName itemName;
 
 	UPROPERTY(BlueprintReadWrite)
-		UTexture2D* icon = nullptr;
+		UTexture2D* icon;
 
 	UPROPERTY(BlueprintReadWrite)
 		FText description;
@@ -38,5 +38,19 @@ struct FItem_details
 
 	UPROPERTY(BlueprintReadWrite)
 		class AWeapon* weaponToSpawn;
+
+	FItem_details()
+	{
+		itemIndex = -1;
+		itemCount = 1;
+		itemName = "None";
+		icon = nullptr;
+		description = FText();
+		isConsumable = false;
+		Usage = 0.0f;
+		WeaponSocketName = FName("None");
+		weaponToSpawn = nullptr;
+
+	}
 };
 

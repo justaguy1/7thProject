@@ -21,7 +21,7 @@ void AAIHumanCharacter::Tick(float DeltaTime)
 	Super::Tick(DeltaTime);
 
 	
-	AttackPlayer();
+	//AttackPlayer();
 	removePlayer();
 	setPlayerHuds();
 	
@@ -43,7 +43,7 @@ void AAIHumanCharacter::removePlayer()
 		if (player)
 		{
 			player->gainXP(this);
-			Destroy();
+			//Destroy();
 		}
 		
 

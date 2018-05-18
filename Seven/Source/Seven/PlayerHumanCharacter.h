@@ -75,5 +75,7 @@ public :
 
 	UPROPERTY(BlueprintReadWrite,Category=Mystruct)
 	TArray <struct FItem_details> item_Details;
+
+	
 	
 };
