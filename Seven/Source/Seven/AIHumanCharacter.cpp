@@ -95,6 +95,11 @@ void AAIHumanCharacter::AttackPlayer()
 	
 }
 
+void AAIHumanCharacter::ComboAttack()
+{
+
+}
+
 void AAIHumanCharacter::setPlayerHuds()
 {
 	health = currentHealth / maxHealth;
