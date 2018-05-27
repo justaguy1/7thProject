@@ -52,5 +52,20 @@ struct FItem_details
 		weaponToSpawn = nullptr;
 
 	}
+
+	
+};
+
+UENUM(BlueprintType)
+enum class _Directions : uint8
+{
+
+	left		UMETA(DisplayName = "left"),
+	right		UMETA(DisplayName = "right"),
+	forward		UMETA(DisplayName = "forward"),
+	backward	UMETA(DisplayName = "backward"),
+	invalid     UMETA(DisplayName = "invalid")
+
+
 };
 

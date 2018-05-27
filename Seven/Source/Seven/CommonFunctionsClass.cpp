@@ -3,6 +3,7 @@
 #include "CommonFunctionsClass.h"
 #include "HumanCharacter.h"
 
+
 CommonFunctionsClass::CommonFunctionsClass()
 {
 }
@@ -58,5 +59,4 @@ void CommonFunctionsClass::getrelativeDirection(AHumanCharacter* player, AHumanC
 		AI_->reaction_right = false;
 
 	}
-	
 }

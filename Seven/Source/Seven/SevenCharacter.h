@@ -59,8 +59,7 @@ protected:
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 	// End of APawn interface
 
-	UPROPERTY(BlueprintReadWrite)
-		class UAnimInstance * animInstance;
+	
 
 	UPROPERTY(BlueprintReadWrite)
 		bool isMontageplaying = false;
@@ -71,6 +70,8 @@ protected:
 public:
 
 	bool targetIsLockedOn = false;
+	UPROPERTY(BlueprintReadWrite)
+		class UAnimInstance * animInstance;
 
 
 };

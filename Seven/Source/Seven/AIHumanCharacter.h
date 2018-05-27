@@ -35,10 +35,6 @@ public:
 		bool PlayerIsInSight = false;
 
 	virtual void Tick(float DeltaTime) override;
-
-	void AttackPlayer();
-
-	void ComboAttack();
 	
 	void removePlayer();
 
@@ -51,4 +47,7 @@ public:
 
 		bool isWithinPlayerRadius = false;
 	
+		UPROPERTY(BlueprintReadWrite)
+			bool comboreset = true;
+
 };

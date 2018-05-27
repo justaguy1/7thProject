@@ -10,6 +10,7 @@ AAIHumanCharacter::AAIHumanCharacter()
 	previous_health = currentHealth;
 	originalpos = GetActorLocation();
 
+
 }
 void AAIHumanCharacter::BeginPlay()
 {
@@ -21,7 +22,7 @@ void AAIHumanCharacter::Tick(float DeltaTime)
 	Super::Tick(DeltaTime);
 
 	
-	//AttackPlayer();
+
 	removePlayer();
 	setPlayerHuds();
 	
@@ -48,56 +49,6 @@ void AAIHumanCharacter::removePlayer()
 		
 
 	}
-}
-void AAIHumanCharacter::AttackPlayer()
-{
-	bool isReloaded = (FPlatformTime::Seconds() - lastAttackedTime) > delayTimeInSeconds;
-	if (!MyWeapon) return;
-	if (isReloaded && !isMontageplaying)
-	{
-	
-			lastAttackedTime = FPlatformTime::Seconds();
-			int choose = (int)FMath::FRandRange(0, 3);
-			UE_LOG(LogTemp, Warning, TEXT("%d is random vaue"), choose)
-
-				if (playerDistance < 500)
-				{
-					if (isMontageplaying)
-					{
-						UE_LOG(LogTemp, Warning, TEXT("Montage playing"))
-							return;
-					}
-
-					/*if (!attackMontage[choose]) return;*/
-					animInstance->Montage_Play(attackMontage[choose]);
-
-
-
-
-				}
-			
-	}
-	
-		
-		
-	if (playerDistance > 4000.f)
-	{
-		PlayerIsInSight = false;
-		isAngry = false;
-
-	}
-	
-
-
-	if (PlayerIsInSight == true)
-		isAngry = true;
-
-	
-}
-
-void AAIHumanCharacter::ComboAttack()
-{
-
 }
 
 void AAIHumanCharacter::setPlayerHuds()

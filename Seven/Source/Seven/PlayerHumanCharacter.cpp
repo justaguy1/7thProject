@@ -7,6 +7,7 @@
 #include "EngineUtils.h"
 #include "Camera/CameraComponent.h"
 #include "GameFramework/SpringArmComponent.h"
+#include "Runtime/Engine/Classes/GameFramework/Character.h"
 
 
 
@@ -26,6 +27,8 @@ APlayerHumanCharacter::APlayerHumanCharacter()
 	current_xp = 0.f;
 	required_XP = 1000;
 	xp = current_xp / required_XP;
+
+	animInstance = GetMesh()->GetAnimInstance();
 
 	
 }
@@ -165,8 +168,8 @@ void APlayerHumanCharacter::AttackR()
 		return;
 	}
 
-	/*if (!IsInAir)
-		animInstance->Montage_Play(attackMontage[1]);*/
+	if (!IsInAir)
+		animInstance->Montage_Play(attackMontage[1]);
 	throwProjectiles();
 	
 	

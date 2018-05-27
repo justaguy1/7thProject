@@ -28,11 +28,7 @@ protected:
 
 	
 	
-	UPROPERTY(BlueprintReadWrite)
-		TArray <  UAnimMontage*> attackMontage;
-
-	UPROPERTY(BlueprintReadWrite)
-		TArray <  UAnimMontage*> reactMontage;
+	
 
 	UPROPERTY(BlueprintReadWrite)
 		bool IsInAir  = false;
@@ -123,5 +119,13 @@ protected:
 	UFUNCTION(BlueprintCallable)
 		void applyProjectileDamage(float damage);
 
+	public:
+		UPROPERTY(BlueprintReadWrite)
+			TArray <  UAnimMontage*> attackMontage;
+
+		UPROPERTY(BlueprintReadWrite)
+			TArray <  UAnimMontage*> reactMontage;
 	
+		UPROPERTY(EditAnywhere, BlueprintReadWrite)
+			bool isAttackAnimationPlaying = false;
 };

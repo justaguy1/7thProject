@@ -36,8 +36,7 @@ void AHumanCharacter::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
-	if (animInstance != nullptr)
-		isMontageplaying = animInstance->IsAnyMontagePlaying();
+	
 		
 	if (isReactionAnimationPlaying())
 	{
@@ -45,7 +44,7 @@ void AHumanCharacter::Tick(float DeltaTime)
 	}
 	else
 	{
-		canWalk = !isMontageplaying;
+		canWalk = !isMontageplaying;  // TO DO
 	}
 	
 
