@@ -25,6 +25,8 @@ EBTNodeResult::Type UAttackAnimations::ExecuteTask(UBehaviorTreeComponent & Owne
 	
 	
 	_Directions direction = UMyStaticLibrary::getrelativeDirection(AIcharacter,Cast<AActor>(PlayerCharacter));
+	
+		
 	if (direction == _Directions::backward)
 		canSee = false;
 	else
