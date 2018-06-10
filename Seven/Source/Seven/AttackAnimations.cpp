@@ -32,6 +32,9 @@ EBTNodeResult::Type UAttackAnimations::ExecuteTask(UBehaviorTreeComponent & Owne
 	else
 		canSee = true;
 
+	if(!canSee)
+	AIController->SetFocus(Cast<AActor>(PlayerCharacter));
+
 
 	UAnimInstance* animInstance = AIcharacter->animInstance;
 	if (!animInstance)
@@ -43,51 +46,46 @@ EBTNodeResult::Type UAttackAnimations::ExecuteTask(UBehaviorTreeComponent & Owne
 	if (canSee == true)
 	{
 		
-		
+		if (combocount == 2)
+		{
+			BlackboardComp->SetValueAsInt(comboCountKey.SelectedKeyName, 0);
+			return EBTNodeResult::Succeeded;
+
+		}
+		else if (combocount < 2)
+		{
+			BlackboardComp->SetValueAsInt(comboCountKey.SelectedKeyName, ++combocount);
+
+		}
 		
 		if (comboreset == true)
-		{
-			
-			float randVal = FMath::RandRange(0, 6);
-				if(randVal < 3)
-					BlackboardComp->SetValueAsInt(comboCountKey.SelectedKeyName, 0);
-				else
-					BlackboardComp->SetValueAsInt(comboCountKey.SelectedKeyName, 4);
-				
-			
+		{	
+			BlackboardComp->SetValueAsInt(comboCountKey.SelectedKeyName, 0);
 		}
 			
-
+		
 		if (AIcharacter->isAttackAnimationPlaying == false)
 		{
 			UE_LOG(LogTemp, Warning, TEXT("combocount : %d"),combocount);
 			animInstance->Montage_Play(AIcharacter->attackMontage[combocount]);
-			if (combocount == 3)
+		/*	if (combocount == AIcharacter->attackMontage.Max())
 			{
 				BlackboardComp->SetValueAsBool(comboResetKey.SelectedKeyName, true);
 			}
 			else
 			{
 				BlackboardComp->SetValueAsBool(comboResetKey.SelectedKeyName, false);
-			}
-		}
-			
-		if (combocount == 4)
-		{
-			BlackboardComp->SetValueAsInt(comboCountKey.SelectedKeyName, 3);
+			}*/
+
 			
 		}
-		else if (combocount < 3)
-		{
-			BlackboardComp->SetValueAsInt(comboCountKey.SelectedKeyName, ++combocount);
 			
-		}
+		
 	}
 	else
 	{
 		UE_LOG(LogTemp, Warning, TEXT("not visible"));
-		if (AIcharacter->isAttackAnimationPlaying == false)
-			animInstance->Montage_Play(AIcharacter->attackMontage[2]);
+		
 	}
 
 	

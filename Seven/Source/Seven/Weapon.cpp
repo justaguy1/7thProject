@@ -46,7 +46,7 @@ void AWeapon::setDamage(float & currentHealth, AHumanCharacter * player, AHumanC
 	FVector crossprod = FVector::CrossProduct(character_direction, enemy_direction);
 
 
-	if (dotprod > 0.7 && dotprod <= 1)
+	/*if (dotprod > 0.7 && dotprod <= 1)
 	{
 		enemy->reaction_back = true;
 		enemy->reaction_front = false;
@@ -80,12 +80,9 @@ void AWeapon::setDamage(float & currentHealth, AHumanCharacter * player, AHumanC
 		enemy->reaction_left = true;
 		enemy->reaction_right = false;
 		
-	}
+	}*/
 
-	float damage = weaponDamage / 100 * 70;
-	damage = FMath::RandRange(damage, weaponDamage);
-
-	currentHealth -= damage;
+	
 	
 }
 

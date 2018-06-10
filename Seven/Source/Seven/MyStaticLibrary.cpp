@@ -37,3 +37,12 @@ _Directions UMyStaticLibrary::getrelativeDirection(AActor * player, AActor * AI_
 
 	return _Directions::invalid;
 }
+
+float  UMyStaticLibrary::_ApplyDamage(float health, float damageToApply)
+{
+	float damage = damageToApply / 100 * 70;
+	damage = FMath::RandRange(damage, damageToApply);
+	health -= damage;
+	return health;
+	
+}

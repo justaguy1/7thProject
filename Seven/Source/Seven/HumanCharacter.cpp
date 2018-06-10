@@ -69,7 +69,7 @@ void AHumanCharacter::applyWeaponDamage(AWeapon * weapon, AHumanCharacter *playe
 	if (weapon->canApplyDamage == true)
 	{
 
-			weapon->setDamage(currentHealth,player_c,enemy_c);
+			//weapon->setDamage(currentHealth,player_c,enemy_c);
 			UE_LOG(LogTemp,Warning,TEXT("called"))
 			enemy_c->isAngry = true;
 		if (reaction_right == true)
@@ -109,6 +109,7 @@ void AHumanCharacter::applyProjectileDamage(float damage)
 
 void AHumanCharacter::throwProjectiles()
 {
+	
 	if (!projectileBlueprint)
 	{
 		UE_LOG(LogTemp,Warning,TEXT("no projectile identified"))

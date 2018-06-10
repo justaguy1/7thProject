@@ -17,6 +17,9 @@ class SEVEN_API UMyStaticLibrary : public UObject
 public:
 		UFUNCTION(BlueprintCallable)
 		static _Directions getrelativeDirection(AActor* player, AActor* AI_);
+
+		UFUNCTION(BlueprintCallable)
+		static float _ApplyDamage(float health, float damageToApply);
 	
 	
 };

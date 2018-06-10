@@ -14,4 +14,5 @@ public:
 	~CommonFunctionsClass();
 
 	static void getrelativeDirection(class AHumanCharacter* player ,class AHumanCharacter* AI_);
+	
 };

@@ -36,6 +36,7 @@ void AAIHumanCharacter::removePlayer()
 		{
 			UE_LOG(LogTemp,Warning,TEXT("weapon is valid "))
 			MyWeapon->ispossessed = false;
+			
 		}
 		else
 		{

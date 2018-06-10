@@ -128,4 +128,7 @@ protected:
 	
 		UPROPERTY(EditAnywhere, BlueprintReadWrite)
 			bool isAttackAnimationPlaying = false;
+
+		UPROPERTY(EditAnywhere, BlueprintReadWrite)
+			bool isDamagable = false;
 };

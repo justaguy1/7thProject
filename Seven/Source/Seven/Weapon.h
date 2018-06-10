@@ -54,4 +54,12 @@ public:
 		WeaponType weaponType;
 	UPROPERTY(BlueprintReadWrite)
 		bool ispossessed = false;
+
+	UPROPERTY(BlueprintReadWrite)
+		AHumanCharacter* MyOwner;
+
+	UPROPERTY(BlueprintReadWrite)
+		TArray<AActor*> OverlappedActors;
+	
+
 };
